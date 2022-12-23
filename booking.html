@@ -56,16 +56,48 @@
     /* Available Rides */
     .rides{
         margin: 10px;
-        height: 420px;
         margin-bottom: 20px;
+
+        padding: 20px;
+        height: auto;
+
         background-color: rgb(232, 232, 229);
         border-radius: 14px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
      }
     .rides h1{
         font-size: 24px;
         margin: 10px;
     }
 
+    .small-container{
+        width: 60px;
+        text-align: center;
+        margin: 2px;
+    }
+    .avail-vehicle{
+        display: flex;
+        flex-direction: row;
+
+        gap: 20px;
+        align-items: center;
+
+        border-bottom: 3px solid grey;
+    }
+    .rides{
+        font-size: 20px;
+    }
+    .rides .small-container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .rides .last-vehicle{
+        margin-bottom: 17px;
+    }
     /* Setting the position of the menu toggle bar */
     #toggle{
         position: relative;
@@ -79,17 +111,16 @@
     #toggle a{
         text-decoration: none;
         color: black;
+        font-weight: bold;
         transition: color 0.2s ease;
     }
     #toggle a:hover{
         color: rgb(43, 156, 237);
+        transition: color 0.2s ease;
     }
     #toggle a:active{
         color: greenyellow;
     }
-    /* #toggle a:visited{ */
-        /* color: yellow; */
-    /* } */
 
     /* ab input ki bari */
     #toggle input{
@@ -146,8 +177,6 @@
    #toggle input:checked ~ span{
        opacity: 1;
        transform: rotate(40deg);
-       /* transform: rotate(45deg) translate(6px, 0px); */
-       /* background: rgb(255, 163, 51); */
    }
    #toggle input:checked ~ span:nth-last-child(2){
        transform: rotate(-40deg);
@@ -163,13 +192,13 @@
 
     #menu{
         position: absolute;
-        width: 250px;
+        width: 350px;
         height: 100vh;
         margin: -100px 0 0 -50px;
         padding: 50px;
         padding-top: 125px;
         
-        font-size: 1.3rem;
+        font-size: 1.6rem;
         background: white;
         border-radius: 20px;
         list-style-type: none;
@@ -183,13 +212,11 @@
 
         /* opacity: 25%; */
     }
-    /* #menu::before{
-        content: "";
-        background-color: #c41f1fe5;
-        filter: blur(4px);
-    } */
-    /*
-    * And let's slide it in from the left
+    #menu a{
+        margin: 16px;
+    }
+
+    /* And let's slide it in from the left
     */
     #toggle input:checked ~ ul{
         transform: none;
@@ -197,9 +224,9 @@
 
 
     /* Banner */
-    /* .banner{
-      background-color: beig;
-    } */
+    .banner img{
+        
+    }
 </style>
 <body>
     <div class="container">
@@ -213,17 +240,17 @@
                     <span></span>
         
                     <ul id="menu">
-                        <a href="#"><li>Book Your Ride</li></a>
+                        <a href="/booking.html"><li>Book Your Ride</li></a>
                         <a href="#"><li>Help</li></a>
-                        <a href="#"><li>Contact Us</li></a>
-                        <a href="https://google.co.in" target="_blank"><li>More</li></a>
+                        <a href="/contact.html"><li>Contact Us</li></a>
+                        <a href="/index.html" target="_blank"><li>More</li></a>
                     </ul>
                 </div>
                 <h1>Enter Your Ride Details</h1>
             </div>
             <form action="/booking.js" id="book-form">
                 <div>
-                    <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
+                    <i class="fa fa-search" aria-hidden="true"></i>
                     <input type="text" name="pickup" id="pickup" placeholder="🔍 Enter Your Pickup Location">
                 </div>
                 <div>
@@ -232,33 +259,38 @@
                 </div>
                 <div>
                     <input type="text" name="when" id="when" placeholder="🕛 When to pickup?">
-                    <!-- <input list="whens" name="when" id="when">
-                    <datalist id="whens">
-                      <option value="Now">
-                      <option value="Schedule for later">
-                    </datalist>
-                    <input type="submit"> -->
                 </div>
             </form>
             <img src="/pwdByGoogle.png" alt="">
 
             <div class="rides">
                 <h1>Available take-A-ways</h1>
-                <div class="cycle">
-                    <i class="fa-duotone fa-person-biking"></i> hi heloo
+                <div class="Bicycle avail-vehicle">
+                    <div class="small-container"><div>🚲</div><i id="bicyle-time">3 mins</i></div>
+                    Bicyle (5)
                 </div>
-                <div class="bike"></div>
-                <div class="indica"></div>
-                <div class="suv"></div>
+                <div class="bike avail-vehicle">
+                    <div class="small-container"><div>🏍️</div><i id="bike-time">5 mins</i></div>
+                     Bike (11)
+                </div>
+                <div class="indica avail-vehicle">
+                    <div class="small-container"><div>🚗</div><i id="indica-time">5 mins</i></div>
+
+                     Indica (2)
+                </div>
+                <div class="suv avail-vehicle last-vehicle">
+                    <div class="small-container"><div>🚘</div><i id="suv-time">----</i></div>
+
+                     SUV (0)
+                </div>
             </div>
         </div>
         <div class="banner">
-        <img src="/Cars.jpg" alt="banner">
+        <img src="https://i0.wp.com/s3.ap-south-1.amazonaws.com/img.paisawapas/images/2022/08/08135225/10-Best-Carpool-Apps-in-India-Paisa-Wapas-Blog.jpeg?fit=1200%2C800&ssl=1" alt="banner">
         </div>
     </div>
 
     <!-- script for font-awesome -->
-    <script src="https://kit.fontawesome.com/26504e4a1f.js" crossorigin="anonymous"></script>
-
+    <script src="https://example.com/fontawesome/v5.15.4/js/all.js" data-search-pseudo-elements ></script>
 </body>
 </html>
