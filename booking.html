@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking 🚘</title>
+</head>
+<style>
+    /* CSS Reset */
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+    }
+    .container{
+        display: flex;
+        /* flex-direction: row; */
+    }
+    
+    #navbar{
+        display: flex;
+        margin-bottom: 25px;
+    }
+    #navbar .menu{
+        margin: 20px;
+    }
+    .container .booking{
+        display: block;
+        width: 30%;
+    }
+    #navbar h1{
+        margin: auto;
+        margin-top: 6px;
+    }
+    .booking input{
+        margin: 0 0 10px 20px;
+        padding: 10px;
+        border-radius: 10px;
+        width: 400px;
+
+        font-size: 17px;
+        font-family:cursive;
+    }
+
+    .booking img{
+        display: block;
+        width: 200px;
+        margin: auto;
+    }
+    .banner img{
+        width: 70vw;
+    }
+
+    /* Available Rides */
+    .rides{
+        margin: 10px;
+        margin-bottom: 20px;
+
+        padding: 20px;
+        height: auto;
+
+        background-color: rgb(232, 232, 229);
+        border-radius: 14px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+     }
+    .rides h1{
+        font-size: 24px;
+        margin: 10px;
+    }
+
+    .small-container{
+        width: 60px;
+        text-align: center;
+        margin: 2px;
+    }
+    .avail-vehicle{
+        display: flex;
+        flex-direction: row;
+
+        gap: 20px;
+        align-items: center;
+
+        border-bottom: 3px solid grey;
+    }
+    .rides{
+        font-size: 20px;
+    }
+    .rides .small-container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .rides .last-vehicle{
+        margin-bottom: 17px;
+    }
+    /* Setting the position of the menu toggle bar */
+    #toggle{
+        position: relative;
+        top: 10px;
+        left: 20px;
+
+        z-index: 1;
+    }
+
+    /* styling the links */
+    #toggle a{
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        transition: color 0.2s ease;
+    }
+    #toggle a:hover{
+        color: rgb(43, 156, 237);
+        transition: color 0.2s ease;
+    }
+    #toggle a:active{
+        color: greenyellow;
+    }
+
+    /* ab input ki bari */
+    #toggle input{
+
+        /* resize the checkbox */
+        width: 37px;
+        height: 37px;
+        border: 1px solid grey;
+        position: absolute;
+        margin: -4px;
+
+        /* checkbox ko align karne ke liye */
+        /* left: -4px; */
+
+        cursor: pointer;
+
+        opacity: 0; /* hides this */
+        z-index: 2; /* place it over hamburger */
+
+    }
+
+    /* span se 3 bars banane ke liye */
+    #toggle span{
+        display: block;
+        position: relative;
+        width: 40px;
+        height: 6px;
+        margin-bottom: 5px;
+
+        /* ab isse crossmark toggle ke baad bhi visible hoga */
+        /* uske behind nhi rhega */
+        position: relative;
+
+        background: rgb(102, 99, 99);
+        border-radius: 7px;
+
+        z-index: 1;
+
+        transform-origin: 3px 3px;
+        transition: transform 0.4s ease,
+        background 0.5s ease,
+        opacity 0.55s ease;
+
+    }
+   #toggle span:first-child{
+       transform-origin: 0% 0%;
+   }
+   #toggle span:nth-last-child(2){
+       transform-origin: 0%, 100%;
+       margin-bottom: 0;
+   }
+
+   /* Transfrom slice -> crossmark */
+   #toggle input:checked ~ span{
+       opacity: 1;
+       transform: rotate(40deg);
+   }
+   #toggle input:checked ~ span:nth-last-child(2){
+       transform: rotate(-40deg);
+   }
+   #toggle input:checked ~ span:nth-last-child(3){
+       opacity: 0;
+       transform: rotate(0deg) scale(0, 0);
+   }
+    #menu{
+        list-style-type: none;
+    }
+
+
+    #menu{
+        position: absolute;
+        width: 350px;
+        height: 100vh;
+        margin: -100px 0 0 -50px;
+        padding: 50px;
+        padding-top: 125px;
+        
+        font-size: 1.6rem;
+        background: white;
+        border-radius: 20px;
+        list-style-type: none;
+        -webkit-font-smoothing: antialiased;
+        /* to stop flickering of text in safari */
+        
+        /* transform-origin: 0% 0%; */
+        transform: translate(-100%, 0);
+        
+        transition: transform 0.7s cubic-bezier(0.77,0.2,0.05,1.0);
+
+        /* opacity: 25%; */
+    }
+    #menu a{
+        margin: 16px;
+    }
+
+    /* And let's slide it in from the left
+    */
+    #toggle input:checked ~ ul{
+        transform: none;
+    }
+
+
+    /* Banner */
+    .banner img{
+        
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="booking">
+            <div id="navbar">
+                <div id="toggle">
+                    <input type="checkbox">
+        
+                    <span></span>
+                    <span></span>
+                    <span></span>
+        
+                    <ul id="menu">
+                        <a href="/booking.html"><li>Book Your Ride</li></a>
+                        <a href="#"><li>Help</li></a>
+                        <a href="/contact.html"><li>Contact Us</li></a>
+                        <a href="/index.html" target="_blank"><li>More</li></a>
+                    </ul>
+                </div>
+                <h1>Enter Your Ride Details</h1>
+            </div>
+            <form action="/booking.js" id="book-form">
+                <div>
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <input type="text" name="pickup" id="pickup" placeholder="🔍 Enter Your Pickup Location">
+                </div>
+                <div>
+                    <i class="fa-duotone fa-person-biking"></i>
+                    <input type="text" name="destination" id="destination" placeholder="🔍 Enter your Destination Location">
+                </div>
+                <div>
+                    <input type="text" name="when" id="when" placeholder="🕛 When to pickup?">
+                </div>
+            </form>
+            <img src="/pwdByGoogle.png" alt="">
+
+            <div class="rides">
+                <h1>Available take-A-ways</h1>
+                <div class="Bicycle avail-vehicle">
+                    <div class="small-container"><div>🚲</div><i id="bicyle-time">3 mins</i></div>
+                    Bicyle (5)
+                </div>
+                <div class="bike avail-vehicle">
+                    <div class="small-container"><div>🏍️</div><i id="bike-time">5 mins</i></div>
+                     Bike (11)
+                </div>
+                <div class="indica avail-vehicle">
+                    <div class="small-container"><div>🚗</div><i id="indica-time">5 mins</i></div>
+
+                     Indica (2)
+                </div>
+                <div class="suv avail-vehicle last-vehicle">
+                    <div class="small-container"><div>🚘</div><i id="suv-time">----</i></div>
+
+                     SUV (0)
+                </div>
+            </div>
+        </div>
+        <div class="banner">
+        <img src="https://i0.wp.com/s3.ap-south-1.amazonaws.com/img.paisawapas/images/2022/08/08135225/10-Best-Carpool-Apps-in-India-Paisa-Wapas-Blog.jpeg?fit=1200%2C800&ssl=1" alt="banner">
+        </div>
+    </div>
+
+    <!-- script for font-awesome -->
+    <script src="https://example.com/fontawesome/v5.15.4/js/all.js" data-search-pseudo-elements ></script>
+</body>
+</html>
