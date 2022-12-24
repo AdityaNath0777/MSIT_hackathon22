@@ -2197,7 +2197,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .top-head-btn {
-  background: ;
+  /* background: ; */
   padding: 9px 26px;
 }
 
@@ -2389,7 +2389,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu ul li:hover > a {
-  color: ;
+  color: rgb(40, 109, 237);
 }
 
 .nav-menu ul ul {
